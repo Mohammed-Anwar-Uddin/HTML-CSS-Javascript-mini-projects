@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <style>
+
+        body{
+            background-color: rgb(55, 40, 40);
+            color: azure;
+            display: flex;
+            height: 80vh;;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            box-sizing: border-box;
+            & #plus,#minus, #reset{
+                padding: 4px 10px;
+                background-color: aqua;
+                border: none;
+                border-radius: 5px;
+            }
+        }
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        #reset{
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+<h1 id="counter">0</h1>
+<div class="btns">
+<button id="plus" >+</button>
+<button id="minus" >-</button>
+</div>
+<div class="increment" style="display: block; margin-top: 10px;">
+<label>increment/Decrement By: 
+    <input id="input" value="1"  style=" width: 50px;" type="number"></label>
+    <button id="reset" style="display: block; margin-top: 10px;" >reset</button>
+
+</div>
+</div>
+</body>
+<script>
+    let counterDiv = document.getElementById("counter");
+    let inputNum = document.getElementById("input");
+    let plusBtn = document.getElementById("plus");
+    let minusBtn = document.getElementById("minus");
+    let resetBtn = document.getElementById("reset");
+
+
+
+    console.log(inputNum.value)
+
+plusBtn.addEventListener("click",()=>{
+    let inputDiv = parseInt(inputNum.value)
+    let countDiv = parseInt(counterDiv.innerHTML);
+    counterDiv.innerHTML = inputDiv + countDiv;
+})
+minusBtn.addEventListener("click",()=>{
+    let inputDiv = parseInt(inputNum.value)
+    let countDiv = parseInt(counterDiv.innerHTML);
+    counterDiv.innerHTML =  countDiv - inputDiv;
+})
+
+resetBtn.addEventListener("click",()=>{
+    inputNum.value = 1
+    counterDiv.innerHTML = 0
+})
+
+
+</script>
+</html>
