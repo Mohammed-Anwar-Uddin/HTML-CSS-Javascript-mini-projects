@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Transfrom</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            height: 120vh;
+            background:linear-gradient(#000,#444);
+            color: rgb(221, 218, 218);
+        }
+        input{
+            height: 30px;
+            width: 40vw;
+            position: relative;
+            border-radius: 7px;
+            top: 10%;
+            background-color: rgb(221, 218, 218);
+            font-size: 20px;
+            margin: 0 auto;
+            padding: 5px;
+        }
+
+        .text{
+            font-size: 15px;
+            position: absolute;
+            top: 22%;
+            left: 30%;
+        }
+        div {
+            margin: 4px 0;
+            width: 40vw;
+        }
+        
+        p{
+            margin-top: 10px;
+            font-size: 20px;
+        }
+        .textdiv{
+            height: 20px;
+            width: 40vw;
+            background-color: blanchedalmond;
+            padding: 5px;
+            border-radius: 5px;
+            color: #190808;
+        }
+        
+    </style>
+</head>
+<body>
+    <input id="input" placeholder="Write the text here below are the transformations" autocomplete="off" type="text">
+    <div class="text">
+    <div>
+        <p>Lower Case</p>
+        <p class="textdiv" id="lowercase"></p>
+    </div>
+    <div>
+        <p>Upper Case</p>
+        <p class="textdiv" id="uppercase"></p>
+    </div>
+    <div>
+        <p>Camel Case</p>
+        <p class="textdiv" id="camelcase"></p>
+    </div>
+    <div>
+        <p>Pascal Case</p>
+        <p class="textdiv" id="pascalcase"></p>
+    </div>
+    <div>
+        <p>Snake Case</p>
+        <p class="textdiv" id="snakecase"></p>
+    </div>
+    <div>
+        <p>Kebab Case</p>
+        <p class="textdiv" id="kebabcase"></p>
+    </div>
+    <div>
+        <p>Trim</p>
+        <p class="textdiv" id="trim"></p>
+    </div>
+</div>
+</body>
+<script>
+    let input = document.getElementById("input")
+    let lowerCase = document.getElementById("lowercase")
+    let upperCase = document.getElementById("uppercase")
+    let camelCase = document.getElementById("camelcase")
+    let pascalCase = document.getElementById("pascalcase")
+    let snakeCase = document.getElementById("snakecase")
+    let kebabCase = document.getElementById("kebabcase")
+    let trim = document.getElementById("trim")
+
+
+    input.addEventListener("input",(event)=>{
+lowerCase.innerHTML = input.value.trim().toLowerCase();
+upperCase.innerHTML = input.value.trim().toUpperCase();
+camelCase.innerHTML = camelCasing(input.value.trim());
+pascalCase.innerHTML =  pascalCasing(input.value.trim());
+snakeCase.innerHTML =  snakeCasing(input.value.trim());
+kebabCase.innerHTML = kebabCasing(input.value.trim());
+trim.innerHTML = trimCasing(input.value.trim());
+
+
+    })
+
+
+    function camelCasing(string){
+        let stringArr = string.split(" ");
+        camelStr = "";
+        if (string === ""){
+            return string
+        }
+        for (let i = 0;i < stringArr.length;i++){
+                camelStr += stringArr[i][0].toUpperCase()+stringArr[i].substring(1).toLowerCase();
+        }
+        camelString = camelStr[0][0].toLowerCase()+camelStr.substring(1)
+        return camelString
+    }
+
+    function pascalCasing(string){
+        let stringArr = string.split(" ");
+        let pascalStr = ""
+        if (string === ""){
+            return string
+        }
+for (let i = 0;i<stringArr.length;i++){
+    pascalStr += stringArr[i][0].toUpperCase()+stringArr[i].substring(1);
+}
+return pascalStr
+    }
+
+    function snakeCasing(string){
+        stringArr = string.split(' ');
+        return stringArr.join("_")
+    }
+    function kebabCasing(string){
+        stringArr = string.split(' ');
+        return stringArr.join("-")
+    }
+
+function trimCasing(string){
+    stringArr = string.split(" ");
+    return stringArr.join("").toLowerCase();
+}
+
+</script>
+
+</html>
