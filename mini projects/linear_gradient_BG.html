@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linear Gradient Background project</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: linear-gradient(#000, #444);
+      }
+      button{
+        border-radius: 20px;
+        padding: 10px 15px;
+        font-size: 14px;
+        margin:0 2.7rem;
+        margin-top: -40px;
+        border: 0;
+        color: #b2e8cb;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+        
+      }
+      button:hover{
+        background-color: #cda;
+        color: #444;
+      }
+      button:active{
+        background-color: #af5;
+      }
+      .bg-property{
+        background-color: #fff;
+        padding: 1rem;
+        opacity: 0.53;
+        margin-top: 4rem;
+        color: rgb(8, 70, 29);
+      }
+
+      .left{
+        background-color:rgb(68, 68, 133);
+      }
+      .right{
+        background-color: rgb(169, 206, 48);
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <button class="left">#fff</button>
+      <button class="right">#444</button>
+      <div class="bg-property">
+        Background-img:linear-gradient(#fff,#444)
+      </div>
+    </div>
+  </body>
+  <script>
+    let leftBtn  = document.querySelector(".left")
+    let rightBtn  = document.querySelector(".right")
+    let bg = document.querySelector(".bg-property")
+    let hexElemts = "123456789abcdef"
+    let left = "#fff"
+    let right = "#444"
+    function hexColor(){
+        hexvalues = "#"
+        for (let i = 0;i<6;i++){
+            hexvalues += hexElemts[Math.floor(Math.random()* 15)]
+        }
+        return hexvalues
+    }
+
+    function UpdateDiv(update){
+        bg.innerHTML = "background-image:" + update
+    }
+
+    leftBtn.addEventListener("click",()=>{
+        left = hexColor();
+        console.log(right);
+        leftBtn.innerHTML = left
+        document.body.style.backgroundImage = `linear-gradient(${left},${right})`
+        UpdateDiv(`linear-gradient(${left},${right})`)
+
+    })
+    rightBtn.addEventListener("click",()=>{
+        right = hexColor();
+        rightBtn.innerHTML = right
+document.body.style.backgroundImage = `linear-gradient(${left},${right})`
+UpdateDiv(`linear-gradient(${left},${right})`)
+    })
+
+  </script>
+</html>
