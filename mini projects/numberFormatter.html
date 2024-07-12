@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Formatter</title>
+    <style>
+        body{
+            background-color: #444;
+        }
+        h1{
+            font-size: 30px;
+            color: rgb(151, 151, 151);
+            font-weight: 300;
+        }
+        input{
+            color: #000;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Welcome to the number formatter</h1>
+        <input id="input" type="text" maxlength="16" autocomplete="off" placeholder="Please enter a number" >
+    </center>
+    
+</body>
+<script>
+    let userInput = document.getElementById("input");
+let prevValue = ""
+    userInput.addEventListener("input",(event)=>{
+        let inputvalue = event.target.value
+
+        if (/\d+$/g.test(inputvalue)){
+            userInput.value = inputvalue
+        }else{
+            userInput.value = inputvalue.substring(0,inputvalue.length -1);
+        }
+
+        if (inputvalue.length === 4 && prevValue.length < inputvalue.length){
+            userInput.value = `+(${inputvalue.substring(0,3)}) - ${inputvalue[inputvalue.length-1]}`
+            
+        }
+        else if(inputvalue.length === 9 && prevValue.length > inputvalue.length){
+            event.target.value = inputvalue.substring(2,5);
+}
+        prevValue = inputvalue
+    })
+
+
+</script>
+</html>
