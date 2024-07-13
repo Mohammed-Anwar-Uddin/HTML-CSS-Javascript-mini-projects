@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number</title>
+
+    <style>
+        body{
+            background-color: #444;
+
+        }
+        .main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+        }
+        h1{
+            font-size: 60px;
+            color:gray;
+            font-weight: 300;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        p{
+            color: #ccc;
+            font-size: 19px;
+        }
+        input[type="text"]{
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+        input[type="submit"]{
+            padding: 5px 10px;
+            font-size: 13px;
+            background-color: #d5d2d2;
+            color: #333;
+            border-radius: 10px;
+            
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+<h1>Guess The Number</h1>
+<p>The Number is between 1 and 100</p>
+<form>
+    <input id="input" type="text" placeholder="eg:10">
+    <input id="submit" type="submit">
+</form>
+<p id="displayText"></p>
+    </div>
+</body>
+<script>
+    let inputText = document.getElementById("input") 
+    let submit = document.getElementById("submit") 
+    let displayText = document.getElementById("displayText") 
+    randomNum = RandomNum() 
+
+submit.addEventListener("click",(event)=>{
+    event.preventDefault();
+    userAns = parseInt(inputText.value)
+    console.log(randomNum);
+
+if (userAns == randomNum){
+    displayText.innerHTML = "Congo You GOT IT Lets Play Again"
+    inputText.value = ""
+    randomNum = RandomNum() 
+}
+else if ( userAns < randomNum){
+    displayText.innerHTML ="Too Low"
+    inputText.value = ""
+
+}
+else if ( userAns > randomNum){
+    displayText.innerHTML ="Too High"
+    inputText.value = ""
+
+}else{
+    displayText.innerHTML ="Enter a proper Number"
+
+}
+})
+
+
+function RandomNum(){
+    return Math.floor(Math.random() * 101)
+}
+
+</script>
+</html>
