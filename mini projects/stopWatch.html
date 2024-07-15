@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StopWatch</title>
+    <style>
+      body{
+        background: linear-gradient(to right,#234c36,rgb(195, 139, 139));
+      }
+      .main{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 60vh;
+      }
+      #clock{
+        width: 500px;
+        height: 250px;
+        background-color: #444;
+        text-align: center;
+        border-radius: 12px;
+        box-shadow: 0 10px 0 black;
+        position: relative;
+        padding: 10px 0;
+
+      }
+      p{
+        font-size: 70px;
+        color: #ccc;
+      }
+      button{
+       padding: 7px 20px;
+       border-radius: 10px;
+       border: none;
+       background:linear-gradient(to right bottom,#6d92a9,#0afb7a);
+       margin-right: 10px;
+       font-size: 14px;
+       font-weight: 100;
+       font-family: fantasy;
+      }
+
+      button:active{
+        background:linear-gradient(to right bottom,#23282c,#07f576);
+
+      }
+
+      button:hover{
+        background:linear-gradient(to right bottom,#3f525d,#389c66);
+
+      }
+
+      
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div id="clock">
+        <p id="watch">00:00:00</p>  
+          <button id="start">Start</button>
+          <button id="stop">Stop</button>
+      </div>
+      
+
+    
+      
+    </div>
+  </body>
+
+  <script>
+    let watch = document.getElementById("watch");
+    let start = document.getElementById("start");
+    let stop = document.getElementById("stop");
+    let seconds = 0;
+    let minutes = 0;
+    let hour = 0;
+    let interval;
+
+    start.addEventListener("click", () => {
+      if(!interval){
+        interval = setInterval(() => {
+        if (seconds >= 60) {
+          seconds = 0;
+          minutes++;
+        } else if (minutes >= 60) {
+          minutes = 0;
+          hour++;
+        }
+
+        seconds++
+        watch.innerText = `${hour<10?'0'+hour:hour}:${minutes<10?'0'+minutes:minutes}:${seconds<10?'0'+seconds:seconds}`;
+        
+      }, 1000);
+      }
+    });
+    stop.addEventListener("click", () =>{
+      clearInterval(interval)
+      interval = null
+    } 
+   );
+  </script>
+</html>
