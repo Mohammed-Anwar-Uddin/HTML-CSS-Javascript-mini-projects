@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: grid;
+        place-content: center;
+        height: 80vh;
+        background-color: #444;
+        color: whitesmoke;
+      }
+
+      
+h1{
+    width: 250px;
+}
+      .text{
+        color: brown;
+        position: relative;
+        text-align: left;
+        
+      }
+      .text::after{
+        content: "";
+        position: absolute;
+        top:0;
+        right: -5%;
+        height: 35px;
+        width: 3px;
+        background-color: black;
+      }
+
+      .first-span{
+        display: inline-block;
+        width: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>I'm a &nbsp;<span class="text"></span></h1>
+
+    <script>
+      let span = document.querySelector(".text");
+      let words = ["developer", "Learner", "writer", "Player"];
+      let word = 0;
+      let character = 0;
+
+      setInterval(() => {
+        span.innerHTML += words[word][character];
+
+        if (character >= words[word].length) {
+          character = 0;
+          span.innerHTML = "";
+          if (word >= words.length -1) {
+            word = 0;
+          } else {
+            word++;
+          }
+        } else {
+          character++;
+        }
+      }, 500);
+    </script>
+  </body>
+</html>
