@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light and Dark Mode</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            position: relative;
+            height: 100vh;
+            font-size: 16px;
+            margin-top: 35px;
+        }
+.page-dark{
+   position: absolute;
+   left: 2%;
+   top: 7%;
+   font-size: 25px;
+}
+.containers{
+    border: 3px solid black;
+    width: 80%;
+    padding: 60px 30px;
+    margin-top: 65px;
+    border-radius: 10px;
+    font-size: 17px;
+}
+.bottom{
+    background-color: #fff;
+    color: black;
+}
+.containers label{
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.dark{
+    background-color: black;
+    color: #fff;
+}
+
+
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Light and Dark Mode</h1>
+    <div class="containers">
+        <div class="page-dark" >
+        <label for="dark">Dark Mode</label>
+        <input type="checkbox" id="dark">
+    </div>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam suscipit perspiciatis quibusdam delectus sit! Ullam optio cum, quas accusantium iure odio ipsam laborum quo ratione iste minus obcaecati ut fugiat.</p>
+
+    </div>
+
+    <div class="containers bottom" id="container">
+        <div class="check">
+        <label for="dark-container">Press here to apply dark mode only to this container</label>
+        <input type="checkbox" class="dark-container">
+    </div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolores accusantium dolor fugiat deserunt vero tenetur libero excepturi incidunt ducimus!</p>
+
+    </div>
+</center>
+</body>
+<script>
+    let bodyCheck = document.getElementById("dark")
+    let darkContainer = document.querySelector(".dark-container")
+    let container = document.getElementById("container")
+
+    
+bodyCheck.addEventListener("click",(event)=>{
+if (bodyCheck.checked){
+    document.body.classList.add("dark")
+}else{
+    document.body.classList.remove('dark')
+}
+darkContainer.checked = bodyCheck.checked
+changeContainerBackgroundColor()
+})
+
+function changeContainerBackgroundColor(){
+    if (darkContainer.checked){
+    container.classList.add('dark')
+}else{
+    container.classList.remove('dark')
+}
+}
+
+darkContainer.addEventListener("click",()=>{
+    changeContainerBackgroundColor()
+   
+})
+
+
+
+
+</script>
+</html>
