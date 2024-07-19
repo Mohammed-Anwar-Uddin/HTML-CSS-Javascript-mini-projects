@@ -1,0 +1,139 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Formatter</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  background-color: #ccef;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  padding: 6rem;
+  background: black;
+}
+
+.container h2 {
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 3rem;
+  margin-bottom: 40px;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+button {
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: blueviolet;
+  color: #fff;
+  border: none;
+  margin: 10px;
+}
+
+p {
+  width: 600px;
+  height: 600px;
+  background: #ccef;
+  color: #000;
+  height: 80px;
+  border: 1px solid #555;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 2rem;
+  font-family: sans-serif;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.italic {
+  font-style: italic;
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="input-container">
+        <h2>Type In Your Words</h2>
+        <input type="text" id="input-field" placeholder="Type Your Text Here" />
+      </div>
+
+      <div class="btns-container">
+        <button class="btn uppercase">ABC</button>
+        <button class="btn lowercase">abc</button>
+        <button class="btn capitalize">Abc</button>
+        <button class="btn bold">B</button>
+        <button class="btn italic">/</button>
+        <button class="btn underline">ABC</button>
+      </div>
+
+      <p id="output-field">Output</p>
+    </div>
+
+    <script>
+
+const inputField = document.getElementById("input-field");
+const outputField = document.getElementById("output-field");
+const buttons = document.querySelectorAll("button");
+
+inputField.addEventListener(
+  "keyup",
+  () => (outputField.innerHTML = inputField.value)
+);
+
+buttons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (btn.classList.contains("uppercase")) {
+      outputField.innerHTML = outputField.innerHTML.toUpperCase();
+    } else if (btn.classList.contains("lowercase")) {
+      outputField.innerHTML = outputField.innerHTML.toLocaleLowerCase();
+    } else if (btn.classList.contains("capitalize")) {
+      outputField.innerHTML =
+        outputField.innerHTML.charAt(0).toUpperCase() +
+        outputField.innerHTML.slice(1).toLowerCase();
+    } else if (btn.classList.contains("bold")) {
+      outputField.style.fontWeight = "900";
+    } else if (btn.classList.contains("italic")) {
+      outputField.style.fontStyle = "italic";
+    } else if (btn.classList.contains("underline")) {
+      outputField.style.textDecoration = "underline";
+    }
+  });
+});
+
+    </script>
+  </body>
+</html>
