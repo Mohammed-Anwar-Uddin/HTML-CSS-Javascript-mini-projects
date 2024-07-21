@@ -1,0 +1,113 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interchangeable Background Color</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: rgb(28, 28, 35);
+      }
+
+      .content-container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        border: none;
+        color: #fff;
+        border: 2px solid white;
+        width: 120px;
+        height: 100px;
+        margin: 20px;
+        cursor: pointer;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .purple {
+        background-color: purple;
+      }
+
+      .blue {
+        background-color: blue;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .green {
+        background-color: green;
+      }
+
+      .yellow {
+        background-color: yellow;
+      }
+
+      .teal {
+        background-color: teal;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content-container">
+      <nav class="nav">
+        <input type="button" value="purple" class="btn purple" />
+        <input type="button" value="blue" class="btn blue" />
+        <input type="button" value="red" class="btn red" />
+        <input type="button" value="green" class="btn green" />
+        <input type="button" value="yellow" class="btn yellow" />
+        <input type="button" value="teal" class="btn teal" />
+      </nav>
+    </div>
+
+    <script>const btns = document.querySelectorAll(".btn");
+
+        btns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            number = btn.value;
+            changeBackground(number);
+          });
+        });
+        
+        const body = document.body;
+        
+        function changeBackground(number) {
+          body.className = "";
+          switch (number) {
+            case "purple":
+              body.classList.add("purple");
+              break;
+            case "blue":
+              body.classList.add("blue");
+              break;
+            case "red":
+              body.classList.add("red");
+              break;
+            case "green":
+              body.classList.add("green");
+              break;
+            case "yellow":
+              body.classList.add("yellow");
+              break;
+            case "teal":
+              body.classList.add("teal");
+              break;
+            default:
+              break;
+          }
+        }</script>
+  </body>
+</html>
