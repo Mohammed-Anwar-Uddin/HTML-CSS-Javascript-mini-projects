@@ -1,0 +1,88 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Toggler</title>
+    <style>
+        :root {
+  --primary-color: white;
+  --primary-label: black;
+  --secndary-label: white;
+  --white-ball: white;
+  --black-ball: black;
+}
+
+body {
+  background: var(--primary-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#switch {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+label {
+  display: block;
+  width: 100px;
+  height: 50px;
+  background: var(--primary-label);
+  border-radius: 100px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+label::after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border-radius: 70px;
+  background-color: var(--white-ball);
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  transition: 0.5s;
+}
+
+#switch:checked + label:after {
+  background-color: var(--black-ball);
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+#switch:checked + label {
+  background-color: var(--secndary-label);
+}
+
+label:active:after {
+  width: 60px;
+}
+    </style>
+  </head>
+  <body>
+    <input type="checkbox" id="switch" />
+    <label for="switch"></label>
+
+    <script>
+        let toggler = document.getElementById("switch");
+
+toggler.addEventListener("click", () => {
+  //   if (toggler.checked === true) {
+  //     document.body.style.backgroundColor = "black";
+  //   } else {
+  //     document.body.style.backgroundColor = "white";
+  //   }
+
+  toggler.checked === true
+    ? (document.body.style.backgroundColor = "black")
+    : (document.body.style.backgroundColor = "white");
+});
+    </script>
+  </body>
+</html>
